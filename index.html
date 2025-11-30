@@ -1,0 +1,1587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sudhanshu Yadav – Professional Portfolio</title>
+  
+  <!-- Load Inter font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ============================================
+    CSS RESET & BASE STYLES
+    ============================================
+    */
+    :root {
+      --bg-dark: #111827; /* Tailwind gray-900 */
+      --bg-card: #1F2937; /* Tailwind gray-800 */
+      --bg-hover: #374151; /* Tailwind gray-700 */
+      --text-light: #F3F4F6; /* Tailwind gray-100 */
+      --text-muted: #9CA3AF; /* Tailwind gray-400 */
+      --brand-blue: #3B82F6; /* Tailwind blue-500 */
+      --brand-blue-hover: #2563EB; /* Tailwind blue-600 */
+      --border-color: #374151; /* Tailwind gray-700 */
+      --bg-nav: rgba(17, 24, 39, 0.8);
+      --glow-color: rgba(59, 130, 246, 0.15);
+      --shadow-light: rgba(0, 0, 0, 0.1);
+      --shadow-dark: rgba(0, 0, 0, 0.2);
+    }
+
+    html[data-theme="light"] {
+      --bg-dark: #F9FAFB; /* gray-50 */
+      --bg-card: #FFFFFF; /* white */
+      --bg-hover: #F3F4F6; /* gray-100 */
+      --text-light: #1F2937; /* gray-800 */
+      --text-muted: #6B7280; /* gray-500 */
+      --border-color: #E5E7EB; /* gray-200 */
+      --bg-nav: rgba(255, 255, 255, 0.8);
+      --glow-color: rgba(59, 130, 246, 0.1);
+      --shadow-light: rgba(0, 0, 0, 0.05);
+      --shadow-dark: rgba(0, 0, 0, 0.1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a {
+      color: var(--brand-blue);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    a:hover {
+      color: var(--brand-blue-hover);
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    h1, h2, h3, h4 {
+      color: var(--text-light);
+      line-height: 1.3;
+      font-weight: 700;
+    }
+
+    h1 { font-size: 2.75rem; }
+    h2 { font-size: 2.25rem; }
+    h3 { font-size: 1.25rem; }
+    h4 { font-size: 1.1rem; }
+
+    section {
+      padding: 5rem 0;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* ============================================
+    BUTTONS
+    ============================================
+    */
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 500;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+      border: 2px solid transparent;
+      text-align: center;
+    }
+    
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+    
+    .btn:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      transform: translateY(0);
+    }
+
+    .btn-primary {
+      background-color: var(--brand-blue);
+      color: #fff;
+    }
+    .btn-primary:hover {
+      background-color: var(--brand-blue-hover);
+      color: #fff;
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      color: var(--brand-blue);
+      border-color: var(--brand-blue);
+    }
+    .btn-outline:hover {
+      background-color: var(--brand-blue);
+      color: #fff;
+    }
+
+    /* ============================================
+    NAVBAR
+    ============================================
+    */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      width: 100%;
+      /* Glassmorphism effect */
+      background-color: var(--bg-nav);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .navbar-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 90%;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-light);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links li a {
+      font-weight: 500;
+      color: var(--text-muted);
+      padding: 0.5rem;
+      position: relative;
+    }
+
+    .nav-links li a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--brand-blue);
+      transition: width 0.3s ease;
+    }
+    
+    .nav-links li a:hover {
+      color: var(--text-light);
+    }
+    
+    .nav-links li a:hover::after,
+    .nav-links li a.active::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      display: block; /* Show on desktop */
+    }
+
+    .nav-right-group {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    #theme-toggle {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #theme-toggle:hover {
+      color: var(--text-light);
+      background-color: var(--bg-hover);
+    }
+    #theme-toggle svg {
+      width: 22px;
+      height: 22px;
+    }
+    .icon-sun, .icon-moon {
+      transition: transform 0.3s ease;
+    }
+    html[data-theme="dark"] .icon-sun {
+      display: block;
+    }
+    html[data-theme="dark"] .icon-moon {
+      display: none;
+    }
+    html[data-theme="light"] .icon-sun {
+      display: none;
+    }
+    html[data-theme="light"] .icon-moon {
+      display: block;
+    }
+
+
+    /* Mobile Nav Toggle */
+    .nav-toggle {
+      display: none;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0.5rem;
+      z-index: 1001;
+    }
+
+    .nav-toggle-icon {
+      width: 24px;
+      height: 24px;
+      color: var(--text-light);
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      transition: transform 0.3s ease-in-out;
+    }
+    
+    /* ============================================
+    HERO SECTION
+    ============================================
+    */
+    .hero {
+      padding-top: 6rem;
+      padding-bottom: 6rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Professional gradient glow */
+    .hero::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
+      filter: blur(80px);
+      transform: translate(-50%, -50%);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .avatar {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--brand-blue);
+      box-shadow: 0 0 30px rgba(59, 130, 246, 0.3);
+      margin: 0 auto 1.5rem auto;
+      background-color: var(--bg-card);
+    }
+
+    .hero h1 {
+      margin-bottom: 1rem;
+      font-size: 3.25rem;
+    }
+
+    .hero h1 span {
+      color: var(--brand-blue);
+    }
+
+    .hero-subtitle {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+      color: var(--text-muted);
+      min-height: 2.5em; /* Space for typewriter */
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+
+    .hero-social {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+    }
+
+    .hero-social a {
+      color: var(--text-muted);
+    }
+    
+    .hero-social a:hover {
+      color: var(--text-light);
+      transform: scale(1.1);
+    }
+
+    .hero-social a svg {
+      width: 28px;
+      height: 28px;
+    }
+
+    /* ============================================
+    ABOUT SECTION
+    ============================================
+    */
+    .about h2, .portfolio h2, .contact h2 {
+      text-align: center;
+      margin-bottom: 3rem;
+      position: relative;
+    }
+
+    /* Underline accent */
+    .about h2::after, .portfolio h2::after, .contact h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background-color: var(--brand-blue);
+      border-radius: 2px;
+    }
+    
+    .about-container {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 3rem;
+      align-items: flex-start;
+    }
+
+    .about-text p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+      transition: opacity 0.3s ease;
+    }
+    
+    .about-text p:last-child {
+      margin-bottom: 0;
+    }
+
+    .about-skills {
+      background-color: var(--bg-card);
+      padding: 2rem;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+    }
+
+    /* ENHANCEMENT: Styles for new skills list */
+    .skills-list {
+      display: grid;
+      gap: 1rem;
+    }
+    .skills-list dt {
+      font-weight: 600;
+      color: var(--text-light);
+    }
+    .skills-list dd {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-left: 0; /* Reset default dl margin */
+    }
+    /* End enhancement */
+
+    @keyframes rotation {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* ============================================
+    PORTFOLIO SECTION (Tabs & Grid)
+    ============================================
+    */
+    .tabs {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    .tab {
+      padding: 0.75rem 2rem;
+      border-radius: 8px;
+      font-weight: 500;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: 2px solid var(--border-color);
+      background: transparent;
+      color: var(--text-muted);
+    }
+    
+    .tab:hover {
+      background: var(--bg-hover);
+      color: var(--text-light);
+    }
+    
+    .tab.active {
+      background: var(--brand-blue);
+      color: #fff;
+      border-color: var(--brand-blue);
+    }
+
+    .tab-content {
+      display: none; /* Hidden by default, JS handles showing */
+    }
+    
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+
+    .card {
+      background: var(--bg-card); /* Changed from bg-dark */
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      overflow: hidden;
+      box-shadow: 0 4px 12px var(--shadow-light);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px var(--shadow-dark);
+    }
+
+    .card-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      background-color: var(--bg-hover);
+    }
+
+    .card-content {
+      padding: 1.5rem;
+    }
+
+    .card-content h3 {
+      color: var(--text-light);
+      margin-bottom: 0.5rem;
+    }
+    
+    .card-content p {
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .card-links {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .card-links a {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 500;
+    }
+
+    .card-links a svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .card-tags span {
+      background-color: var(--bg-hover);
+      color: var(--text-muted);
+      padding: 0.25rem 0.75rem;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    /* Tech Stack Tab */
+    .tech-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+      background-color: var(--bg-card); /* Changed from bg-dark */
+      padding: 2rem;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+    }
+
+    .tech-category h4 {
+      color: var(--brand-blue);
+      margin-bottom: 1rem;
+    }
+
+    .tech-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .tech-pills span {
+      background-color: var(--bg-hover);
+      color: var(--text-light);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    /* ============================================
+    CONTACT SECTION
+    ============================================
+    */
+    .contact-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      max-width: 900px;
+      margin: 0 auto;
+      background-color: var(--bg-card);
+      padding: 3rem;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .contact-form label {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      padding: 0.8rem 1rem;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      background: var(--bg-dark);
+      color: var(--text-light);
+      font-size: 1rem;
+      font-family: 'Inter', sans-serif;
+      resize: vertical;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      border-color: var(--brand-blue);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+    }
+
+    .contact-form textarea {
+      min-height: 120px;
+    }
+
+    .contact-info h3 {
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-info p {
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+
+    .contact-social {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .contact-social a {
+      color: var(--text-muted);
+    }
+    
+    .contact-social a:hover {
+      color: var(--text-light);
+      transform: scale(1.1);
+    }
+    
+    .contact-social a svg {
+      width: 28px;
+      height: 28px;
+    }
+
+    /* ============================================
+    FOOTER
+    ============================================
+    */
+    footer {
+      text-align: center;
+      padding: 2rem 0;
+      background: var(--bg-dark);
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-top: 2rem;
+      border-top: 1px solid var(--border-color);
+    }
+    
+    /* ============================================
+    ANIMATIONS & HELPERS
+    ============================================
+    */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* On-Scroll Reveal Animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* Stagger children */
+    .card.reveal.visible {
+      transition-delay: calc(0.1s * var(--card-index, 0));
+    }
+
+
+    /* Toast Notification */
+    #toast {
+      position: fixed;
+      bottom: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: var(--bg-card);
+      color: var(--text-light);
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      font-weight: 500;
+      z-index: 9999;
+      transition: bottom 0.5s ease;
+    }
+    
+    #toast.show {
+      bottom: 2rem;
+    }
+    
+    /* Back to Top Button */
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background-color: var(--brand-blue);
+      color: #fff;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+      z-index: 50;
+      border: none;
+      cursor: pointer;
+    }
+    .back-to-top:hover {
+      background-color: var(--brand-blue-hover);
+      transform: scale(1.1);
+      color: #fff;
+    }
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+    .back-to-top svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* ============================================
+    RESPONSIVE DESIGN
+    ============================================
+    */
+    @media (max-width: 900px) {
+      .about-container, .contact-container, .tech-grid {
+        grid-template-columns: 1fr;
+      }
+      .contact-container {
+        padding: 2rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 2.5rem; }
+      h2 { font-size: 2rem; }
+      .hero h1 { font-size: 2.75rem; }
+
+      .nav-links {
+        display: none; /* Hide for a real mobile menu */
+        /* For this demo, we'll just simplify */
+        gap: 1rem;
+      }
+      .nav-cta {
+        display: none; /* Hide desktop CTA */
+      }
+      .nav-links li a {
+        font-size: 0.9rem;
+        padding: 0.25rem;
+      }
+      .logo {
+        font-size: 1.25rem;
+      }
+
+      /* Mobile Menu Styles */
+      .nav-toggle {
+        display: block;
+      }
+
+      .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%; /* Start off-screen */
+        width: 70%;
+        max-width: 300px;
+        height: 100vh;
+        background-color: var(--bg-card);
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding: 6rem 2rem 2rem 2rem;
+        gap: 2rem;
+        z-index: 1000;
+        box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+      }
+
+      .nav-menu.active {
+        right: 0;
+      }
+
+      .nav-menu .nav-links {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+      .nav-menu .nav-links a {
+        font-size: 1.25rem;
+        color: var(--text-light);
+      }
+      .nav-menu .nav-cta {
+        display: block;
+        width: 100%;
+      }
+
+    }
+    
+    @media (max-width: 600px) {
+      .hero-buttons {
+        flex-direction: column;
+      }
+      
+      .tabs {
+        gap: 0.5rem;
+      }
+      
+      .tab {
+        padding: 0.75rem 1rem;
+        font-size: 0.9rem;
+      }
+      
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="logo">Sudhanshu Yadav</div>
+      <div class="nav-menu" id="nav-menu">
+        <ul class="nav-links">
+          <li><a href="#hero" class="active">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <a href="#contact" class="btn btn-outline nav-cta">Hire Me</a>
+      </div>
+      <div class="nav-right-group">
+        <button id="theme-toggle" aria-label="Toggle theme">
+          <svg class="icon-sun" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M12 12a5 5 0 100-10 5 5 0 000 10z"></path></svg>
+          <svg class="icon-moon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+        </button>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu">
+          <!-- Hamburger Icon -->
+          <svg class="nav-toggle-icon icon-hamburger" id="icon-hamburger" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+          <!-- Close Icon -->
+          <svg class="nav-toggle-icon icon-close" id="icon-close" style="display:none;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+      <div class="hero-content">
+        <!-- Replaced placeholder with your photo -->
+        <img 
+          src="Avatar/sudhu.png" 
+          alt="Sudhanshu Yadav Avatar" 
+          class="avatar reveal"
+          onerror="this.src='https://placehold.co/140x140/3B82F6/FFFFFF?text=SY'"
+        >
+        <h1 class="reveal" data-delay="100">Hi, I'm <span>Sudhanshu Yadav</span></h1>
+        <p class="hero-subtitle reveal" data-delay="200">
+          <span id="typewriter"></span>
+        </p>
+        <div class="hero-buttons reveal" data-delay="300">
+          <a href="#contact" class="btn btn-primary">Get In Touch</a>
+          <!-- Re-added Download CV button -->
+          <a href="resume.pdf" download class="btn btn-outline">Download CV</a>
+        </div>
+        <div class="hero-social reveal" data-delay="400">
+          <!-- Inlined SVG Icons for professional look -->
+          <a href="https://github.com/heysudhuu" aria-label="GitHub" target="_blank" rel="noopener">
+            <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.026 2.747-1.026.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/heysudhu/" aria-label="LinkedIn" target="_blank" rel="noopener">
+            <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg>
+          </a>
+          <a href="https://www.instagram.com/hey.sudhu" aria-label="Instagram" target="_blank" rel="noopener">
+            <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.148 3.227-1.669 4.771-4.919 4.919-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.07-1.646-.07-4.85s.012-3.584.07-4.85c.148-3.227 1.669 4.771 4.919 4.919 1.266-.058 1.646.07 4.85-.07zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.059 1.689.073 4.948.073s3.667-.014 4.947-.072c4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.947s-.014-3.667-.072-4.947c-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+      <div class="container">
+        <h2 class="reveal">About Me</h2>
+        <div class="about-container reveal">
+          <div class="about-text">
+            <p id="about-me-text">Hello! I'm Sudhanshu, a full-stack developer with a strong passion for cybersecurity. I specialize in building secure, scalable, and user-friendly digital experiences, transforming complex ideas into tangible solutions.</p>
+            <p>My journey in tech is driven by a curiosity to learn and a commitment to quality. I'm adept at working across the entire stack, from crafting responsive front-end interfaces to designing robust back-end systems. I'm particularly interested in application security and integrating best practices into every stage of the development lifecycle.</p>
+            <p>When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or diving into cybersecurity challenges.</p>
+            
+          </div>
+          <div class="about-skills">
+            <h3>Core Competencies</h3>
+            <!-- ENHANCEMENT: Converted to semantic <dl> list -->
+            <dl class="skills-list">
+              <dt>Frontend</dt>
+              <dd>HTML, CSS, JavaScript, React</dd>
+              
+              <dt>Backend</dt>
+              <dd>Node.js, Python, ASP.NET Core</dd>
+              
+              <dt>Databases</dt>
+              <dd>SQL Server, MySQL</dd>
+              
+              <dt>Security</dt>
+              <dd>Ethical Hacking, AppSec Principles</dd>
+              
+              <dt>Tools</dt>
+              <dd>Git, OpenCV, MediaPipe, Arduino</dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio" id="portfolio">
+      <div class="container">
+        <h2 class="reveal">Portfolio Showcase</h2>
+        <div class="tabs reveal" role="tablist">
+          <button class="tab active" data-tab="projects" role="tab" aria-selected="true">Projects</button>
+          <button class="tab" data-tab="certificates" role="tab" aria-selected="false">Certificates</button>
+          <button class="tab" data-tab="techstack" role="tab" aria-selected="false">Tech Stack</button>
+        </div>
+        
+        <!-- Projects Tab -->
+        <div class="tab-content" id="projects" role="tabpanel" style="display: block;">
+          <div class="portfolio-grid">
+            
+            <div class="card reveal" data-delay="100">
+              <img src="Project/TagMyBookLogo.jpeg" alt="RFID Library Checkout And CheckIN" class="card-image" onerror="this.src='https://placehold.co/600x400/1F2937/9CA3AF?text=Project+Image'"/>
+              <div class="card-content">
+                <h3>RFID Library Checkout System</h3>
+                <p>A smart RFID-Based Library System using Arduino, ASP.NET Core Web API, and SQL Server with student & admin dashboards.</p>
+                <div class="card-tags">
+                  <span>Arduino</span>
+                  <span>ASP.NET Core</span>
+                  <span>SQL Server</span>
+                </div>
+                <div class="card-links">
+                  <a href="https://github.com/heysudhuu/TagMyBook-RFID-Library-System.git" target="_blank" rel="noopener">
+                    <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.026 2.747-1.026.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg>
+                    View on GitHub
+                  </a>
+                </div>
+              </div>
+            </div>
+            
+            <div class="card reveal" data-delay="200">
+              <img src="Project/VirtualKeyboardLogo.jpeg" alt="Hand Gesture Controlled Virtual Keyboard" class="card-image" onerror="this.src='https://placehold.co/600x400/1F2937/9CA3AF?text=Project+Image'"/>
+              <div class="card-content">
+                <h3>Gesture Controlled Virtual Keyboard</h3>
+                <p>Control a virtual keyboard using hand gestures detected via computer vision. Built with Python, OpenCV, and MediaPipe.</p>
+                <div class="card-tags">
+                  <span>Python</span>
+                  <span>OpenCV</span>
+                  <span>MediaPipe</span>
+                </div>
+                <div class="card-links">
+                  <a href="https://github.com/heysudhuu/Hand-Gesture-Controlled-Virtual-Keyboards" target="_blank" rel="noopener">
+                    <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.026 2.747-1.026.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg>
+                    View on GitHub
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="card reveal" data-delay="300">
+              <img src="Project/NeonPoseTrackerLogo.jpeg" alt="My Neon Pose Tracker" class="card-image" onerror="this.src='https://placehold.co/600x400/1F2937/9CA3AF?text=Project+Image'"/>
+              <div class="card-content">
+                <h3>Neon Pose Tracker</h3>
+                <p>Interactive app using PyQt5, OpenCV, and MediaPipe to track and visualize human poses and hand landmarks in real-time.</p>
+                <div class="card-tags">
+                  <span>PyQt5</span>
+                  <span>OpenCV</span>
+                  <span>MediaPipe</span>
+                </div>
+                <div class="card-links">
+                  <a href="https://github.com/heysudhuu/neon-pose-tracker.git" target="_blank" rel="noopener">
+                    <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.026 2.747-1.026.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg>
+                    View on GitHub
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- FIX: Corrected <di> to <div> and removed extra wrapper <div> -->
+            <div class="card reveal" data-delay="400">
+              
+              <img src="Project/robo.jpeg" alt="Robotics and Engineering Project" class="card-image" onerror="this.src='https://placehold.co/600x400/1F2937/9CA3AF?text=Project+Image'"/>
+              
+              <div class="card-content">
+                
+                <h3>Robotics & Engineering Project</h3>
+                
+                <p>A human-controlled military robot featuring 360° surveillance, rotating defense system, IR metal detection, and first-aid support—ranked Top 3 at Chandigarh University’s Project Exhibition.”</p>
+                
+                <div class="card-tags">
+                  <span>Robotics</span>
+                  <span>Engineering</span>
+                  <span>Arduino</span>
+                  </div>
+                
+                <div class="card-links">
+                  
+                  <a href="https://www.linkedin.com/posts/heysudhu_innovation-robotics-engineering-activity-7312047046834733056-g6_8?utm_source=share&utm_medium=member_desktop" target="_blank" rel="noopener">
+                    <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg>
+                    View on LinkedIn
+                  </a>
+                  
+                </div>
+              </div>
+            </div>
+      
+           
+
+            <!-- Add more project cards here -->
+
+          </div>
+        </div>
+        
+        <!-- Certificates Tab -->
+        <div class="tab-content" id="certificates" role="tabpanel">
+          <div class="portfolio-grid">
+            
+            <div class="card reveal" data-delay="100">
+              <img src="certificate/AiForEntrp.png" alt="AI for Entrepreneurship certificate" class="card-image" onerror="this.src='https://placehold.co/600x400/1F2937/9CA3AF?text=Certificate'"/>
+              <div class="card-content">
+                <h3>AI for Entrepreneurship</h3>
+                <p>An overview of AI principles applied to business ventures.</p>
+              </div>
+            </div>
+            
+            <div class="card reveal" data-delay="200">
+              <img src="certificate/EthicalHackingMastering.png" alt="Ethical Hacking Masterclass certificate" class="card-image" onerror="this.src='https://placehold.co/600x400/1F2937/9CA3AF?text=Certificate'"/>
+              <div class="card-content">
+                <h3>Ethical Hacking Masterclass</h3>
+                <p>Comprehensive training in ethical hacking techniques and cybersecurity.</p>
+              </div>
+            </div>
+            
+            <div class="card reveal" data-delay="300">
+              <img src="certificate/FullStackDev.png" alt="Full-Stack Web Developer certificate" class="card-image" onerror="this.src='https://placehold.co/600x400/1F2937/9CA3AF?text=Certificate'"/>
+              <div class="card-content">
+                <h3>Full-Stack Web Developer</h3>
+                <p>Certification covering end-to-end web development skills.</p>
+              </div>
+            </div>
+
+            <div class="card reveal" data-delay="400">
+              <img src="certificate/AzureCoginative.png" alt="Azure cognitive Service" class="card-image" onerror="this.src='https://placehold.co/600x400/1F2937/9CA3AF?text=Certificate'"/>
+              <div class="card-content">
+                <h3>Azure Cognitive Services</h3>
+                <p>Implementing AI solutions using Microsoft Azure Cognitive Services.</p>
+              </div>
+            </div>
+
+            <div class="card reveal" data-delay="500">
+              <img src="certificate/Ardiuno.png" alt="The Arduino Plateform certificate" class="card-image" onerror="this.src='https://placehold.co/600x400/1F2937/9CA3AF?text=Certificate'"/>
+              <div class="card-content">
+                <h3>The Arduino Plateform</h3>
+                <p>Hands-on experience with the Arduino platform.</p>
+              </div>
+            </div>
+
+            <div class="card reveal" data-delay="600">
+              <img src="certificate/BlockChain.png" alt="BlockChain certificate" class="card-image" onerror="this.src='https://placehold.co/600x400/1F2937/9CA3AF?text=Certificate'"/>
+              <div class="card-content">
+                <h3>Blockchain Certificate</h3>
+                <p>A deep dive into blockchain technology.</p>
+              </div>
+            </div>
+
+            <div class="card reveal" data-delay="700">
+              <img src="certificate/Database&SQLPython.png" alt="Database & SQL Python certificate" class="card-image" onerror="this.src='https://placehold.co/600x400/1F2937/9CA3AF?text=Certificate'"/>
+              <div class="card-content">
+                <h3>Database & SQL Python</h3>
+                <p>Mastering databases and SQL with Python.</p>
+              </div>
+            
+            </div>
+             <div class="card reveal" data-delay="800"> 
+              <img src="certificate/DesignThinking.png" alt="DesignThinking certificate" class="card-image" onerror="this.src='https://placehold.co/600x400/1F2937/9CA3AF?text=Certificate'"/>
+              <div class="card-content">
+                <h3>Design Thinking Certificate</h3>
+                <p>Principles of design thinking for problem-solving.</p>
+              </div>
+
+            </div>
+              <div class="card reveal" data-delay="900"> 
+                <img src="certificate/DevOpsFountation.png" alt="DevOpsFountation certificate" class="card-image" onerror="this.src='https://placehold.co/600x400/1F2937/9CA3AF?text=Certificate'"/>
+                <div class="card-content">
+                  <h3>DevOps Fountation</h3>
+                  <p>Principles of DevOps for efficient software delivery.</p>
+                </div>
+              </div>
+
+            <!-- Add more certificate cards as needed -->
+            
+          </div>
+        </div>
+        
+        <!-- Tech Stack Tab -->
+        <div class="tab-content" id="techstack" role="tabpanel">
+          <div class="tech-grid reveal">
+            <div class="tech-category">
+              <h4>Frontend</h4>
+              <div class="tech-pills">
+                <span>HTML5</span>
+                <span>CSS3</span>
+                <span>JavaScript (ES6+)</span>
+                <span>React</span>
+                <span>Bootstrap</span>
+              </div>
+            </div>
+            <div class="tech-category">
+              <h4>Backend</h4>
+              <div class="tech-pills">
+                <span>Python</span>
+                <span>Node.js</span>
+                <span>ASP.NET Core</span>
+              </div>
+            </div>
+            <div class="tech-category">
+              <h4>Databases</h4>
+              <div class="tech-pills">
+                <span>SQL Server</span>
+                <span>MySQL</span>
+              </div>
+            </div>
+            <div class="tech-category">
+              <h4>CV & Hardware</h4>
+              <div class="tech-pills">
+                <span>OpenCV</span>
+                <span>MediaPipe</span>
+                <span>Arduino</span>
+              </div>
+            </div>
+            <div class="tech-category">
+              <h4>DevOps & Tools</h4>
+              <div class="tech-pills">
+                <span>Git & GitHub</span>
+                <span>PyQt5</span>
+              </div>
+            </div>
+            <div class="tech-category">
+              <h4>Security</h4>
+              <div class="tech-pills">
+                <span>Ethical Hacking</span>
+                <span>Kali Linux</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+      <div class="container">
+        <h2 class="reveal">Contact Me</h2>
+        <div class="contact-container reveal">
+          
+          <form class="contact-form" autocomplete="off">
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" placeholder="John Doe" required aria-label="Your Name"/>
+            </div>
+            <div class="form-group">
+              <label for="email">Your Email</label>
+              <input type="email" id="email" placeholder="john@example.com" required aria-label="Your Email"/>
+            </div>
+            <div class="form-group">
+              <label for="message">Your Message</label>
+              <textarea id="message" placeholder="Hi Sudhanshu, I'd like to connect..." required aria-label="Your Message"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Send Message</button>
+          </form>
+          
+          <div class="contact-info">
+            <h3>Get In Touch</h3>
+            <p>
+              I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision. Feel free to reach out.
+            </p>
+            <div class="contact-social">
+              <a href="https://github.com/heysudhuu" aria-label="GitHub" target="_blank" rel="noopener">
+                <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.026 2.747-1.026.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg>
+              </a>
+              <a href="https://www.linkedin.com/in/heysudhu/" aria-label="LinkedIn" target="_blank" rel="noopener">
+                <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg>
+              </a>
+              <a href="https://www.instagram.com/hey.sudhu" aria-label="Instagram" target="_blank" rel="noopener">
+                <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.148 3.227-1.669 4.771-4.919 4.919-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.07-1.646-.07-4.85s.012-3.584.07-4.85c.148-3.227 1.669 4.771 4.919 4.919 1.266-.058 1.646.07 4.85-.07zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.059 1.689.073 4.948.073s3.667-.014 4.947-.072c4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.947s-.014-3.667-.072-4.947c-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Sudhanshu Yadav. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <a href="#hero" class="back-to-top" id="back-to-top" aria-label="Go back to top">
+    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg>
+  </a>
+
+  <!-- Toast Notification Element -->
+  <div id="toast"></div>
+
+  <script>
+    // All JavaScript is now inline
+    document.addEventListener('DOMContentLoaded', () => {
+      
+      // --- Theme Toggler ---
+      const themeToggle = document.getElementById('theme-toggle');
+      
+      // Load saved theme from localStorage
+      const savedTheme = localStorage.getItem('theme') || 'dark'; // Default to dark
+      document.documentElement.setAttribute('data-theme', savedTheme);
+
+      themeToggle.addEventListener('click', () => {
+        let currentTheme = document.documentElement.getAttribute('data-theme');
+        let newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+      });
+
+
+      // --- Mobile Nav Toggle ---
+      const navToggle = document.getElementById('nav-toggle');
+      const navMenu = document.getElementById('nav-menu');
+      const iconHamburger = document.getElementById('icon-hamburger');
+      const iconClose = document.getElementById('icon-close');
+      const navLinksMobile = navMenu.querySelectorAll('a');
+
+      if (navToggle && navMenu) {
+        navToggle.addEventListener('click', () => {
+          navMenu.classList.toggle('active');
+          // Toggle icons
+          if (navMenu.classList.contains('active')) {
+            iconHamburger.style.display = 'none';
+            iconClose.style.display = 'block';
+          } else {
+            iconHamburger.style.display = 'block';
+            iconClose.style.display = 'none';
+          }
+        });
+
+        // Close menu when a link is clicked
+        navLinksMobile.forEach(link => {
+          link.addEventListener('click', () => {
+            if (navMenu.classList.contains('active')) {
+              navMenu.classList.remove('active');
+              iconHamburger.style.display = 'block';
+              iconClose.style.display = 'none';
+            }
+          });
+        });
+      }
+
+      // --- Active Nav Link Scrolling ---
+      const sections = document.querySelectorAll('section[id]');
+      const navLinks = document.querySelectorAll('.nav-links a');
+
+      function changeNavOnScroll() {
+        let current = '';
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop;
+          if (pageYOffset >= sectionTop - 150) { // 150px offset
+            current = section.getAttribute('id');
+          }
+        });
+
+        const desktopNavLinks = document.querySelectorAll('.navbar-container .nav-links a');
+        desktopNavLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+          }
+        });
+        
+        // Also update mobile nav links if they exist
+        const mobileNavLinks = document.querySelectorAll('.nav-menu .nav-links a');
+        mobileNavLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+          }
+        });
+      }
+      window.addEventListener('scroll', changeNavOnScroll);
+      changeNavOnScroll(); // Initial check
+
+      // --- Tab Switching for Portfolio ---
+      const tabs = document.querySelectorAll('.tab');
+      const tabContents = document.querySelectorAll('.tab-content');
+
+      tabs.forEach(tab => {
+        tab.addEventListener('click', function () {
+          // Deactivate all tabs
+          tabs.forEach(t => {
+            t.classList.remove('active');
+            t.setAttribute('aria-selected', 'false');
+          });
+          
+          // Activate clicked tab
+          this.classList.add('active');
+          this.setAttribute('aria-selected', 'true');
+
+          // Hide all content
+          tabContents.forEach(content => {
+            content.style.display = 'none';
+          });
+          
+          // Show content for clicked tab
+          const tabId = this.getAttribute('data-tab');
+          const tabContent = document.getElementById(tabId);
+          if (tabContent) {
+            tabContent.style.display = 'block';
+            
+            // Re-observe reveal elements *within this specific tab*
+            observeElements(`#${tabId} .reveal`);
+          }
+        });
+      });
+      
+      // Set default tab
+      const defaultTab = document.querySelector('.tab.active');
+      if (defaultTab) {
+        const defaultTabId = defaultTab.getAttribute('data-tab');
+        document.getElementById(defaultTabId).style.display = 'block';
+      }
+
+      // --- Contact Form Submission ---
+      const form = document.querySelector('.contact-form');
+      if (form) {
+        // ENHANCEMENT: Made async for simulated delay
+        form.addEventListener('submit', async function(e) {
+          e.preventDefault();
+          
+          const submitBtn = form.querySelector('button[type="submit"]');
+          const originalBtnText = submitBtn.innerHTML;
+
+          // ENHANCEMENT: Add sending state to button
+          submitBtn.disabled = true;
+          submitBtn.innerHTML = 'Sending... <span class="loader-inline"></span>';
+
+          // Simulate network request
+          await new Promise(resolve => setTimeout(resolve, 1500));
+
+          // Show a modal or toast instead of alert
+          showToast('Thank you for your message!');
+          
+          form.reset();
+          
+          // Restore button state
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalBtnText;
+        });
+      }
+
+      // --- Simple Toast Notification ---
+      function showToast(message) {
+        const toast = document.getElementById('toast');
+        if (!toast) return;
+        
+        toast.textContent = message;
+        toast.classList.add('show');
+        
+        setTimeout(() => {
+          toast.classList.remove('show');
+        }, 3000);
+      }
+
+      // --- Typewriter Effect ---
+      const typewriterElement = document.getElementById('typewriter');
+      if (typewriterElement) {
+        const roles = [
+          "Full Stack Developer",
+          "Cybersecurity Enthusiast",
+          "Problem Solver",
+          "Tech Enthusiast"
+        ];
+        let i = 0, j = 0, isDeleting = false, current = "", typeSpeed = 100, pause = 1500;
+        
+        function type() {
+          const currentRole = roles[i];
+          if (isDeleting) {
+            // Deleting
+            current = currentRole.substring(0, j--);
+          } else {
+            // Typing
+            current = currentRole.substring(0, j++);
+          }
+          
+          typewriterElement.textContent = current + "|";
+          
+          let delta = isDeleting ? typeSpeed / 2 : typeSpeed;
+          
+          if (!isDeleting && j === currentRole.length + 1) {
+            // Pause at end of word
+            delta = pause;
+            isDeleting = true;
+          } else if (isDeleting && j === -1) {
+            // Finished deleting
+            isDeleting = false;
+            i = (i + 1) % roles.length;
+            delta = 500; // Pause before new word
+            j = 0;
+          }
+          
+          setTimeout(type, delta);
+        }
+        type();
+      }
+
+      // --- Back to Top Button ---
+      const backToTopButton = document.getElementById('back-to-top');
+      
+      function toggleBackToTopButton() {
+        if (backToTopButton) {
+          if (window.pageYOffset > 300) {
+            backToTopButton.classList.add('visible');
+          } else {
+            backToTopButton.classList.remove('visible');
+          }
+        }
+      }
+      
+      window.addEventListener('scroll', toggleBackToTopButton);
+      toggleBackToTopButton(); // Initial check
+
+      // --- On-Scroll Reveal Animation (Intersection Observer) ---
+      let revealObserver;
+
+      function createObserver() {
+        if (revealObserver) {
+          revealObserver.disconnect();
+        }
+
+        revealObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              
+              // Handle card staggering
+              if (entry.target.classList.contains('card')) {
+                // Find all card siblings for correct indexing
+                const cards = Array.from(entry.target.parentElement.querySelectorAll('.card.reveal'));
+                const index = cards.indexOf(entry.target);
+                entry.target.style.setProperty('--card-index', index > -1 ? index : 0);
+              } else {
+                // Handle data-delay for other elements
+                const delay = entry.target.dataset.delay;
+                if (delay) {
+                  entry.target.style.transitionDelay = `${delay}ms`;
+                }
+              }
+              
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.1 // Trigger when 10% of the element is visible
+        });
+      }
+
+      function observeElements(selector) {
+        if (!revealObserver) {
+          createObserver();
+        }
+        const elementsToObserve = document.querySelectorAll(selector);
+        elementsToObserve.forEach(el => {
+          // Reset visibility if we're re-observing (e.g., on tab switch)
+          el.classList.remove('visible');
+          // Also reset inline transition-delay if it was set by JS
+          el.style.transitionDelay = ''; 
+          revealObserver.observe(el);
+        });
+      }
+
+      // Initial observation of all reveal elements NOT in tabs
+      observeElements('.reveal:not(.tab-content .reveal)');
+
+      // FIX: ALSO observe elements in the DEFAULT ACTIVE tab on load
+      const defaultTabOnLoad = document.querySelector('.tab.active');
+      if (defaultTabOnLoad) {
+          const defaultTabId = defaultTabOnLoad.getAttribute('data-tab');
+          observeElements(`#${defaultTabId} .reveal`);
+      }
+
+      // Add image fallbacks
+      document.querySelectorAll('img').forEach(img => {
+        if (img.src.endsWith('.png') || img.src.endsWith('.jpeg') || img.src.endsWith('.jpg')) {
+            const originalSrc = img.src;
+            img.onerror = function() {
+                const isAvatar = img.classList.contains('avatar');
+                const isCardImage = img.classList.contains('card-image');
+                let placeholderText = 'Image';
+                let W = '600';
+                let H = '400';
+                let BG = '1F2937';
+                let FG = '9CA3AF';
+
+                if (isAvatar) {
+                    W = '140'; H = '140'; BG = '3B82F6'; FG = 'FFFFFF'; placeholderText = 'SY';
+                } else if (isCardImage) {
+                    placeholderText = img.alt.includes('certificate') ? 'Certificate' : 'Project';
+                }
+                
+                img.src = `https://placehold.co/${W}x${H}/${BG}/${FG}?text=${encodeURIComponent(placeholderText)}`;
+                img.onerror = null; // Prevent infinite loop if placeholder fails
+            };
+        }
+      });
+
+    });
+  </script>
+</body>
+</html>
