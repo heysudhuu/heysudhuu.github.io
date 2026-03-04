@@ -1526,6 +1526,7 @@
                 <ul class="nav-links">
                     <li><a href="#hero" class="active">Home</a></li>
                     <li><a href="#about">About</a></li>
+                    <li><a href="#experience">Experience</a></li>
                     <li><a href="#portfolio">Portfolio</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
@@ -1698,6 +1699,383 @@
                             <dd>Git, PyQt5, Kali Linux</dd>
                         </dl>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ EXPERIENCE & EDUCATION SECTION ============ -->
+        <!-- STYLES for Experience & Education Timeline -->
+        <style>
+            /* ============================================
+   EXPERIENCE & EDUCATION SECTION
+   ============================================ */
+            .exp-edu {
+                position: relative;
+                z-index: 1;
+            }
+
+            .exp-edu-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 3.5rem;
+                align-items: start;
+            }
+
+            @media (max-width: 768px) {
+                .exp-edu-grid {
+                    grid-template-columns: 1fr;
+                    gap: 2.5rem;
+                }
+            }
+
+            .timeline-col-title {
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+                margin-bottom: 2rem;
+            }
+
+            .timeline-col-title .col-icon {
+                width: 38px;
+                height: 38px;
+                border-radius: 10px;
+                background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-shrink: 0;
+                box-shadow: 0 0 16px rgba(79, 195, 247, 0.35);
+            }
+
+            .timeline-col-title .col-icon svg {
+                width: 20px;
+                height: 20px;
+                color: #fff;
+            }
+
+            .timeline-col-title h3 {
+                font-size: 1.25rem;
+                font-weight: 700;
+                background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+            }
+
+            /* Vertical timeline line */
+            .timeline {
+                position: relative;
+                padding-left: 2rem;
+            }
+
+            .timeline::before {
+                content: '';
+                position: absolute;
+                left: 8px;
+                top: 6px;
+                bottom: 0;
+                width: 2px;
+                background: linear-gradient(180deg, var(--neon-blue), var(--neon-purple), transparent);
+                border-radius: 2px;
+            }
+
+            .timeline-item {
+                position: relative;
+                margin-bottom: 1.75rem;
+            }
+
+            .timeline-item:last-child {
+                margin-bottom: 0;
+            }
+
+            /* Dot on line */
+            .timeline-item::before {
+                content: '';
+                position: absolute;
+                left: -1.6rem;
+                top: 1.1rem;
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                background: var(--neon-blue);
+                box-shadow: 0 0 10px rgba(79, 195, 247, 0.7);
+                border: 2px solid var(--bg-primary);
+                z-index: 1;
+            }
+
+            .timeline-card {
+                background: var(--bg-glass);
+                border: 1px solid var(--border-subtle);
+                border-radius: 16px;
+                padding: 1.4rem 1.6rem;
+                backdrop-filter: blur(16px);
+                -webkit-backdrop-filter: blur(16px);
+                box-shadow: var(--glow-card);
+                transition: transform 0.3s var(--transition-smooth), box-shadow 0.3s ease, border-color 0.3s ease;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .timeline-card::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 2px;
+                background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+                border-radius: 16px 16px 0 0;
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            }
+
+            .timeline-card:hover {
+                transform: translateY(-4px);
+                border-color: rgba(79, 195, 247, 0.25);
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(79, 195, 247, 0.15);
+            }
+
+            .timeline-card:hover::before {
+                opacity: 1;
+            }
+
+            .timeline-card-role {
+                font-size: 1rem;
+                font-weight: 700;
+                color: var(--text-primary);
+                margin-bottom: 0.2rem;
+            }
+
+            .timeline-card-org {
+                font-size: 0.88rem;
+                font-weight: 600;
+                color: var(--neon-blue);
+                margin-bottom: 0.4rem;
+                font-family: 'Fira Code', monospace;
+            }
+
+            .timeline-card-period {
+                font-size: 0.78rem;
+                color: var(--text-secondary);
+                margin-bottom: 0.9rem;
+                display: flex;
+                align-items: center;
+                gap: 0.35rem;
+                font-family: 'Fira Code', monospace;
+            }
+
+            .timeline-card-period svg {
+                width: 13px;
+                height: 13px;
+                flex-shrink: 0;
+            }
+
+            .timeline-card-badge {
+                display: inline-block;
+                padding: 0.18rem 0.65rem;
+                background: rgba(79, 195, 247, 0.1);
+                border: 1px solid rgba(79, 195, 247, 0.25);
+                border-radius: 50px;
+                font-size: 0.72rem;
+                color: var(--neon-blue);
+                font-family: 'Fira Code', monospace;
+                margin-bottom: 0.9rem;
+            }
+
+            .timeline-card ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                display: flex;
+                flex-direction: column;
+                gap: 0.45rem;
+            }
+
+            .timeline-card ul li {
+                font-size: 0.88rem;
+                color: var(--text-secondary);
+                line-height: 1.65;
+                padding-left: 1.1rem;
+                position: relative;
+            }
+
+            .timeline-card ul li::before {
+                content: '▸';
+                position: absolute;
+                left: 0;
+                color: var(--neon-blue);
+                font-size: 0.7rem;
+                top: 0.15rem;
+            }
+
+            /* Light mode overrides for timeline */
+            html[data-theme="light"] .timeline-card {
+                background: rgba(255, 255, 255, 0.7);
+                border-color: rgba(0, 0, 0, 0.08);
+            }
+        </style>
+
+        <section class="exp-edu" id="experience">
+            <div class="container">
+                <div class="section-heading reveal">
+                    <p class="section-label">Journey</p>
+                    <h2>Experience &amp; Education</h2>
+                </div>
+
+                <div class="exp-edu-grid">
+
+                    <!-- ---- Work Experience Column ---- -->
+                    <div>
+                        <div class="timeline-col-title reveal">
+                            <div class="col-icon">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                </svg>
+                            </div>
+                            <h3>Work Experience</h3>
+                        </div>
+
+                        <div class="timeline">
+
+                            <!-- Intern: Front-end Developer -->
+                            <div class="timeline-item reveal">
+                                <div class="timeline-card">
+                                    <p class="timeline-card-role">Front-End Developer Intern</p>
+                                    <p class="timeline-card-org">Prodigy InfoTech</p>
+                                    <p class="timeline-card-period">
+                                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                        </svg>
+                                        Jun 2025 – Present
+                                    </p>
+                                    <span class="timeline-card-badge">Active</span>
+                                    <ul>
+                                        <li>Contributing to real-world projects involving UI/UX design and responsive
+                                            web development.</li>
+                                        <li>Collaborating with cross-functional teams to build scalable web interfaces
+                                            using HTML, CSS, JavaScript, and modern frameworks.</li>
+                                        <li>Participating in weekly code reviews and progress meetings to enhance code
+                                            quality.</li>
+                                        <li>Improving skills in version control (Git), Agile methodologies, and
+                                            debugging techniques.</li>
+                                        <li>Gaining hands-on experience in professional development workflows and team
+                                            best practices.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Intern: Python Development -->
+                            <div class="timeline-item reveal">
+                                <div class="timeline-card">
+                                    <p class="timeline-card-role">Python Development Intern</p>
+                                    <p class="timeline-card-org">CogniFyz Technologies</p>
+                                    <p class="timeline-card-period">
+                                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                        </svg>
+                                        Jul 2025 – Present
+                                    </p>
+                                    <span class="timeline-card-badge">Active</span>
+                                    <ul>
+                                        <li>Contributing to scalable and efficient Python software solutions with clean
+                                            code practices.</li>
+                                        <li>Involved in real-world project development and implementation of
+                                            Python-based applications.</li>
+                                        <li>Strengthening hands-on skills in software engineering, problem-solving, and
+                                            version control.</li>
+                                        <li>Working collaboratively in a team environment on production-grade codebases.
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- ---- Education Column ---- -->
+                    <div>
+                        <div class="timeline-col-title reveal">
+                            <div class="col-icon">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 14l9-5-9-5-9 5 9 5zm0 7a9 9 0 01-9-9" />
+                                </svg>
+                            </div>
+                            <h3>Education</h3>
+                        </div>
+
+                        <div class="timeline">
+
+                            <!-- B.Tech - Chandigarh University -->
+                            <div class="timeline-item reveal">
+                                <div class="timeline-card">
+                                    <p class="timeline-card-role">Bachelor of Engineering – Computer Science</p>
+                                    <p class="timeline-card-org">Chandigarh University</p>
+                                    <p class="timeline-card-period">
+                                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                        </svg>
+                                        2023 – 2027 · Under Graduation
+                                    </p>
+                                    <ul>
+                                        <li>Pursuing B.Tech in Computer Science Engineering.</li>
+                                        <li>Gaining expertise in Java, Python, C++ and data structures &amp; algorithms.
+                                        </li>
+                                        <li>Hands-on projects in software development, databases, and web technologies.
+                                        </li>
+                                        <li>Strong focus on cybersecurity, full-stack development, and AI applications.
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- 12th Grade -->
+                            <div class="timeline-item reveal">
+                                <div class="timeline-card">
+                                    <p class="timeline-card-role">12th Grade – Non-Medical</p>
+                                    <p class="timeline-card-org">S.D.S.M Govt. Senior Secondary School</p>
+                                    <p class="timeline-card-period">
+                                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                        </svg>
+                                        2022 – 2023
+                                    </p>
+                                    <ul>
+                                        <li>Developed strong conceptual knowledge in Mathematics, Physics, and
+                                            Chemistry.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- 10th Grade -->
+                            <div class="timeline-item reveal">
+                                <div class="timeline-card">
+                                    <p class="timeline-card-role">10th Grade – General</p>
+                                    <p class="timeline-card-org">S.C.L.L. Hans Raj Jain Public School</p>
+                                    <p class="timeline-card-period">
+                                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                        </svg>
+                                        2020 – 2021
+                                    </p>
+                                    <ul>
+                                        <li>Successfully completed 10th grade with strong performance in Mathematics and
+                                            Science.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
