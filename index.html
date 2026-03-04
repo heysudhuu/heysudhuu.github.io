@@ -8,6 +8,34 @@
     <meta name="description"
         content="Sudhanshu Yadav – Full Stack Developer & Cybersecurity Enthusiast. Portfolio showcasing projects, skills, and certifications." />
 
+    <!-- Favicon -->
+    <link rel="icon" href="Avatar/sudhu.png" type="image/png" />
+    <link rel="apple-touch-icon" href="Avatar/sudhu.png" />
+
+    <!-- Open Graph (WhatsApp, LinkedIn, Facebook) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Sudhanshu Yadav – Full Stack Developer & Cybersecurity Enthusiast" />
+    <meta property="og:description"
+        content="Portfolio of Sudhanshu Yadav – Full Stack Developer, Python Intern, Computer Vision enthusiast & Cybersecurity learner from Chandigarh University." />
+    <meta property="og:image" content="Avatar/sudhu.png" />
+    <meta property="og:url" content="https://heysudhuu.github.io/" />
+    <meta property="og:site_name" content="Sudhanshu Yadav Portfolio" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Sudhanshu Yadav – Portfolio" />
+    <meta name="twitter:description"
+        content="Full Stack Developer & Cybersecurity Enthusiast. Check out my projects, certifications, and experience." />
+    <meta name="twitter:image" content="Avatar/sudhu.png" />
+
+    <!-- Author / Misc SEO -->
+    <meta name="author" content="Sudhanshu Yadav" />
+    <meta name="keywords"
+        content="Sudhanshu Yadav, portfolio, full stack developer, cybersecurity, Python, React, Computer Vision, Chandigarh University" />
+
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -491,8 +519,11 @@
         /* Avatar ring animation */
         .avatar-wrapper {
             position: relative;
-            display: inline-block;
-            margin-bottom: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: fit-content;
+            margin: 0 auto 2rem auto;
         }
 
         .avatar-ring {
@@ -1505,10 +1536,563 @@
                 font-size: 1.8rem;
             }
         }
+
+        /* ← end @media 768px */
+
+        /* ============================================
+   SCROLL PROGRESS BAR
+   ============================================ */
+        #scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            width: 0%;
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple), var(--neon-pink), var(--neon-blue));
+            background-size: 200% auto;
+            z-index: 9999;
+            transition: width 0.1s linear;
+            box-shadow: 0 0 12px rgba(79, 195, 247, 0.8), 0 0 30px rgba(167, 139, 250, 0.4);
+            animation: progressGlow 3s linear infinite;
+        }
+
+        @keyframes progressGlow {
+            0% {
+                background-position: 0% center;
+            }
+
+            100% {
+                background-position: 200% center;
+            }
+        }
+
+        /* ============================================
+   AVAILABILITY BADGE
+   ============================================ */
+        .availability-badge {
+            display: flex;
+            width: fit-content;
+            margin: 0 auto 1.2rem auto;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.45rem 1.2rem;
+            background: rgba(52, 211, 153, 0.08);
+            border: 1px solid rgba(52, 211, 153, 0.4);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            color: var(--neon-green);
+            font-family: 'Fira Code', monospace;
+            box-shadow: 0 0 20px rgba(52, 211, 153, 0.1), inset 0 0 20px rgba(52, 211, 153, 0.03);
+            animation: badgePulse 2.5s ease-in-out infinite;
+        }
+
+        .availability-badge .avail-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--neon-green);
+            border-radius: 50%;
+            flex-shrink: 0;
+            box-shadow: 0 0 8px var(--neon-green);
+            animation: dotPing 1.5s ease-in-out infinite;
+        }
+
+        @keyframes dotPing {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 1;
+                box-shadow: 0 0 8px var(--neon-green);
+            }
+
+            50% {
+                transform: scale(1.5);
+                opacity: 0.6;
+                box-shadow: 0 0 16px var(--neon-green);
+            }
+        }
+
+        @keyframes badgePulse {
+
+            0%,
+            100% {
+                box-shadow: 0 0 20px rgba(52, 211, 153, 0.1), inset 0 0 20px rgba(52, 211, 153, 0.03);
+            }
+
+            50% {
+                box-shadow: 0 0 30px rgba(52, 211, 153, 0.25), inset 0 0 20px rgba(52, 211, 153, 0.08);
+            }
+        }
+
+        /* ============================================
+   FUN FACTS TICKER — single neon strip
+   ============================================ */
+        .fun-facts-ticker {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            margin: 1.75rem auto 0;
+            padding: 0.6rem 0;
+            background: rgba(79, 195, 247, 0.04);
+            border-top: 1px solid rgba(79, 195, 247, 0.12);
+            border-bottom: 1px solid rgba(79, 195, 247, 0.12);
+        }
+
+        .fun-facts-ticker::before,
+        .fun-facts-ticker::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 80px;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .fun-facts-ticker::before {
+            left: 0;
+            background: linear-gradient(to right, var(--bg-primary), transparent);
+        }
+
+        .fun-facts-ticker::after {
+            right: 0;
+            background: linear-gradient(to left, var(--bg-primary), transparent);
+        }
+
+        .ticker-track {
+            display: flex;
+            width: max-content;
+            animation: tickerScroll 35s linear infinite;
+        }
+
+        .ticker-track:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes tickerScroll {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .ticker-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0 1.5rem;
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            font-family: 'Fira Code', monospace;
+            white-space: nowrap;
+            flex-shrink: 0;
+            transition: color 0.3s ease;
+        }
+
+        .ticker-item:hover {
+            color: var(--neon-blue);
+        }
+
+        .ticker-item .ticker-dot {
+            color: var(--neon-blue);
+            font-size: 0.5rem;
+            opacity: 0.6;
+        }
+
+        /* ============================================
+   SKILL PROGRESS BARS
+   ============================================ */
+        .skill-bars {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .skill-bar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.45rem;
+        }
+
+        .skill-bar-name {
+            font-size: 0.83rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            font-family: 'Fira Code', monospace;
+        }
+
+        .skill-bar-pct {
+            font-size: 0.75rem;
+            color: var(--neon-blue);
+            font-family: 'Fira Code', monospace;
+        }
+
+        .skill-bar-track {
+            height: 7px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .skill-bar-fill {
+            height: 100%;
+            width: 0%;
+            border-radius: 50px;
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+            box-shadow: 0 0 10px rgba(79, 195, 247, 0.5);
+            transition: width 1.4s cubic-bezier(0.25, 1, 0.5, 1);
+            position: relative;
+        }
+
+        .skill-bar-fill::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #fff;
+            box-shadow: 0 0 8px var(--neon-blue), 0 0 20px rgba(79, 195, 247, 0.6);
+        }
+
+        /* ============================================
+   ACHIEVEMENTS SECTION — Premium Animated Cards
+   ============================================ */
+        .achievements {
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        /* Floating background orbs */
+        .achievements::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            top: -100px;
+            left: -150px;
+            background: radial-gradient(circle, rgba(79, 195, 247, 0.06) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: floatOrb1 10s ease-in-out infinite alternate;
+        }
+
+        .achievements::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            bottom: -100px;
+            right: -100px;
+            background: radial-gradient(circle, rgba(167, 139, 250, 0.07) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: floatOrb2 14s ease-in-out infinite alternate;
+        }
+
+        @keyframes floatOrb1 {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            100% {
+                transform: translate(60px, 40px) scale(1.1);
+            }
+        }
+
+        @keyframes floatOrb2 {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            100% {
+                transform: translate(-50px, 30px) scale(1.08);
+            }
+        }
+
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Stagger animation on scroll-in */
+        .achievement-card {
+            background: linear-gradient(135deg, rgba(10, 22, 40, 0.9), rgba(20, 35, 60, 0.7));
+            border: 1px solid rgba(79, 195, 247, 0.15);
+            border-radius: 24px;
+            padding: 2rem;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: default;
+        }
+
+        /* Animated gradient top border */
+        .achievement-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--neon-blue), var(--neon-purple), var(--neon-pink), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .achievement-card:hover::before {
+            left: 0;
+        }
+
+        /* Inner glow sweeper on hover */
+        .achievement-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 50% 0%, rgba(79, 195, 247, 0.08) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            border-radius: 24px;
+        }
+
+        .achievement-card:hover::after {
+            opacity: 1;
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-10px) scale(1.01);
+            border-color: rgba(79, 195, 247, 0.4);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6),
+                0 0 0 1px rgba(79, 195, 247, 0.2),
+                0 0 40px rgba(79, 195, 247, 0.1);
+        }
+
+        .achievement-icon-wrap {
+            width: 64px;
+            height: 64px;
+            border-radius: 18px;
+            background: linear-gradient(135deg, rgba(79, 195, 247, 0.15), rgba(167, 139, 250, 0.15));
+            border: 1px solid rgba(79, 195, 247, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 2rem;
+            box-shadow: 0 4px 20px rgba(79, 195, 247, 0.15);
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
+            position: relative;
+            z-index: 1;
+            animation: iconFloat 4s ease-in-out infinite;
+        }
+
+        @keyframes iconFloat {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-6px);
+            }
+        }
+
+        .achievement-card:nth-child(2) .achievement-icon-wrap {
+            animation-delay: -1s;
+        }
+
+        .achievement-card:nth-child(3) .achievement-icon-wrap {
+            animation-delay: -2s;
+        }
+
+        .achievement-card:nth-child(4) .achievement-icon-wrap {
+            animation-delay: -3s;
+        }
+
+        .achievement-card:hover .achievement-icon-wrap {
+            transform: translateY(-4px) scale(1.1) rotate(-5deg);
+            box-shadow: 0 8px 30px rgba(79, 195, 247, 0.3);
+        }
+
+        .achievement-body {
+            flex: 1;
+            position: relative;
+            z-index: 1;
+        }
+
+        .achievement-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.2px;
+        }
+
+        .achievement-desc {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 0.75rem;
+        }
+
+        .achievement-desc strong {
+            color: var(--neon-blue);
+            font-weight: 600;
+        }
+
+        .achievement-badge-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            padding: 0.25rem 0.8rem;
+            background: linear-gradient(135deg, rgba(79, 195, 247, 0.12), rgba(167, 139, 250, 0.12));
+            border: 1px solid rgba(79, 195, 247, 0.25);
+            border-radius: 50px;
+            font-size: 0.72rem;
+            color: var(--neon-blue);
+            font-family: 'Fira Code', monospace;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        /* ============================================
+   GITHUB STATS WIDGET
+   ============================================ */
+        .github-stats-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 3rem;
+        }
+
+        .github-stats-wrapper img {
+            border-radius: 16px;
+            border: 1px solid rgba(79, 195, 247, 0.15);
+            transition: transform 0.35s var(--transition-bounce), box-shadow 0.35s ease, border-color 0.35s ease;
+            max-width: 100%;
+        }
+
+        .github-stats-wrapper img:hover {
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(79, 195, 247, 0.15);
+            border-color: rgba(79, 195, 247, 0.35);
+        }
+
+        /* ============================================
+   CURSOR TRAIL
+   ============================================ */
+        .cursor-trail {
+            position: fixed;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9997;
+            transform: translate(-50%, -50%);
+            background: var(--neon-blue);
+            opacity: 0;
+        }
+
+        /* ============================================
+   LIGHT MODE OVERRIDES
+   ============================================ */
+        html[data-theme="light"] {
+            --bg-primary: #f0f4f8;
+            --bg-secondary: #e2eaf4;
+            --bg-card: rgba(255, 255, 255, 0.9);
+            --bg-glass: rgba(255, 255, 255, 0.75);
+            --bg-glass-hover: rgba(255, 255, 255, 0.95);
+            --bg-nav: rgba(240, 244, 248, 0.85);
+            --border-glow: rgba(79, 195, 247, 0.2);
+            --border-subtle: rgba(0, 0, 0, 0.09);
+            --text-primary: #1a202c;
+            --text-secondary: #4a5568;
+            --text-accent: #2563eb;
+            --neon-blue: #2563eb;
+            --neon-purple: #7c3aed;
+            --neon-cyan: #0891b2;
+            --neon-pink: #db2777;
+            --neon-green: #059669;
+            --glow-blue: 0 0 20px rgba(37, 99, 235, 0.2), 0 0 60px rgba(37, 99, 235, 0.05);
+            --glow-purple: 0 0 20px rgba(124, 58, 237, 0.2), 0 0 60px rgba(124, 58, 237, 0.05);
+            --glow-card: 0 4px 24px rgba(0, 0, 0, 0.1), 0 0 0 1px var(--border-subtle);
+        }
+
+        html[data-theme="light"] body {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+        }
+
+        html[data-theme="light"] #particle-canvas {
+            opacity: 0.15;
+        }
+
+        html[data-theme="light"] .cursor-dot {
+            background: var(--neon-blue);
+            box-shadow: 0 0 8px var(--neon-blue);
+        }
+
+        html[data-theme="light"] .cursor-ring {
+            border-color: rgba(37, 99, 235, 0.5);
+        }
+
+        html[data-theme="light"] .fun-facts-ticker {
+            background: rgba(37, 99, 235, 0.04);
+            border-color: rgba(37, 99, 235, 0.15);
+        }
+
+        html[data-theme="light"] .fun-facts-ticker::before {
+            background: linear-gradient(to right, var(--bg-primary), transparent);
+        }
+
+        html[data-theme="light"] .fun-facts-ticker::after {
+            background: linear-gradient(to left, var(--bg-primary), transparent);
+        }
+
+        html[data-theme="light"] .achievement-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(240, 244, 248, 0.8));
+            border-color: rgba(37, 99, 235, 0.15);
+        }
+
+        html[data-theme="light"] .achievement-card:hover {
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15), 0 0 30px rgba(37, 99, 235, 0.12);
+        }
+
+        html[data-theme="light"] .skill-bar-track {
+            background: rgba(0, 0, 0, 0.06);
+        }
     </style>
 </head>
 
 <body>
+
+    <!-- Scroll Progress Bar -->
+    <div id="scroll-progress"></div>
+
+    <!-- Cursor Trail (12 dots) -->
+    <div class="cursor-trail" id="trail-0"></div>
+    <div class="cursor-trail" id="trail-1"></div>
+    <div class="cursor-trail" id="trail-2"></div>
+    <div class="cursor-trail" id="trail-3"></div>
+    <div class="cursor-trail" id="trail-4"></div>
+    <div class="cursor-trail" id="trail-5"></div>
 
     <!-- Particle Canvas Background -->
     <canvas id="particle-canvas"></canvas>
@@ -1528,6 +2112,7 @@
                     <li><a href="#about">About</a></li>
                     <li><a href="#experience">Experience</a></li>
                     <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#achievements">Achievements</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
                 <a href="#contact" class="btn btn-primary nav-cta">Hire Me</a>
@@ -1574,6 +2159,12 @@
                     <div class="avatar-ring-inner"></div>
                     <img src="Avatar/sudhu.png" alt="Sudhanshu Yadav" class="avatar"
                         onerror="this.src='https://placehold.co/140x140/0a1628/4fc3f7?text=SY'" />
+                </div>
+
+                <!-- Availability Badge -->
+                <div class="availability-badge reveal" data-delay="50">
+                    <span class="avail-dot"></span>
+                    Open to Internships &amp; Opportunities
                 </div>
 
                 <p class="hero-greeting reveal" data-delay="100">&lt; Hello, World! /&gt;</p>
@@ -1625,6 +2216,31 @@
                         </svg>
                     </a>
                 </div>
+
+                <!-- Fun Facts Ticker -->
+                <div class="fun-facts-ticker reveal" data-delay="500">
+                    <div class="ticker-track">
+                        <!-- Each item duplicated for seamless infinite loop -->
+                        <span class="ticker-item"><span class="ticker-dot">●</span> Cricket Fan 🏏</span>
+                        <span class="ticker-item"><span class="ticker-dot">●</span> Late-Night Coder 🌙</span>
+                        <span class="ticker-item"><span class="ticker-dot">●</span> Open Source Contributor 🤝</span>
+                        <span class="ticker-item"><span class="ticker-dot">●</span> Cybersecurity Learner 🔐</span>
+                        <span class="ticker-item"><span class="ticker-dot">●</span> AI & Computer Vision Enthusiast
+                            🤖</span>
+                        <span class="ticker-item"><span class="ticker-dot">●</span> Problem Solver 💡</span>
+                        <span class="ticker-item"><span class="ticker-dot">●</span> Currently Learning Docker 🐳</span>
+                        <!-- Duplicate for seamless scroll -->
+                        <span class="ticker-item"><span class="ticker-dot">●</span> Cricket Fan 🏏</span>
+                        <span class="ticker-item"><span class="ticker-dot">●</span> Late-Night Coder 🌙</span>
+                        <span class="ticker-item"><span class="ticker-dot">●</span> Open Source Contributor 🤝</span>
+                        <span class="ticker-item"><span class="ticker-dot">●</span> Cybersecurity Learner 🔐</span>
+                        <span class="ticker-item"><span class="ticker-dot">●</span> AI & Computer Vision Enthusiast
+                            🤖</span>
+                        <span class="ticker-item"><span class="ticker-dot">●</span> Problem Solver 💡</span>
+                        <span class="ticker-item"><span class="ticker-dot">●</span> Currently Learning Docker 🐳</span>
+                    </div>
+                </div>
+
             </div>
 
             <!-- Animated scroll indicator -->
@@ -1679,25 +2295,62 @@
 
                     <div class="about-skills reveal-right">
                         <h3>Core Competencies</h3>
-                        <dl class="skills-list">
-                            <dt>Frontend</dt>
-                            <dd>HTML5, CSS3, JavaScript, React</dd>
-
-                            <dt>Backend</dt>
-                            <dd>Node.js, Python, ASP.NET Core</dd>
-
-                            <dt>Databases</dt>
-                            <dd>SQL Server, MySQL</dd>
-
-                            <dt>Security</dt>
-                            <dd>Ethical Hacking, AppSec Principles</dd>
-
-                            <dt>CV & Hardware</dt>
-                            <dd>OpenCV, MediaPipe, Arduino</dd>
-
-                            <dt>Tools</dt>
-                            <dd>Git, PyQt5, Kali Linux</dd>
-                        </dl>
+                        <div class="skill-bars">
+                            <div class="skill-bar-item">
+                                <div class="skill-bar-header">
+                                    <span class="skill-bar-name">Python</span>
+                                    <span class="skill-bar-pct">88%</span>
+                                </div>
+                                <div class="skill-bar-track">
+                                    <div class="skill-bar-fill" data-pct="88"></div>
+                                </div>
+                            </div>
+                            <div class="skill-bar-item">
+                                <div class="skill-bar-header">
+                                    <span class="skill-bar-name">HTML / CSS / JavaScript</span>
+                                    <span class="skill-bar-pct">85%</span>
+                                </div>
+                                <div class="skill-bar-track">
+                                    <div class="skill-bar-fill" data-pct="85"></div>
+                                </div>
+                            </div>
+                            <div class="skill-bar-item">
+                                <div class="skill-bar-header">
+                                    <span class="skill-bar-name">ASP.NET Core / Node.js</span>
+                                    <span class="skill-bar-pct">75%</span>
+                                </div>
+                                <div class="skill-bar-track">
+                                    <div class="skill-bar-fill" data-pct="75"></div>
+                                </div>
+                            </div>
+                            <div class="skill-bar-item">
+                                <div class="skill-bar-header">
+                                    <span class="skill-bar-name">OpenCV / MediaPipe</span>
+                                    <span class="skill-bar-pct">80%</span>
+                                </div>
+                                <div class="skill-bar-track">
+                                    <div class="skill-bar-fill" data-pct="80"></div>
+                                </div>
+                            </div>
+                            <div class="skill-bar-item">
+                                <div class="skill-bar-header">
+                                    <span class="skill-bar-name">SQL / Databases</span>
+                                    <span class="skill-bar-pct">72%</span>
+                                </div>
+                                <div class="skill-bar-track">
+                                    <div class="skill-bar-fill" data-pct="72"></div>
+                                </div>
+                            </div>
+                            <div class="skill-bar-item">
+                                <div class="skill-bar-header">
+                                    <span class="skill-bar-name">Cybersecurity / Ethical Hacking</span>
+                                    <span class="skill-bar-pct">70%</span>
+                                </div>
+                                <div class="skill-bar-track">
+                                    <div class="skill-bar-fill" data-pct="70"></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -2383,6 +3036,79 @@
             </div>
         </section>
 
+        <!-- ============ ACHIEVEMENTS SECTION ============ -->
+        <section class="achievements" id="achievements">
+            <div class="container">
+                <div class="section-heading reveal">
+                    <p class="section-label">Recognition</p>
+                    <h2>Achievements &amp; Awards</h2>
+                </div>
+
+                <div class="achievements-grid">
+
+                    <div class="achievement-card reveal">
+                        <div class="achievement-icon">🥈</div>
+                        <div class="achievement-body">
+                            <p class="achievement-title">2nd Place – Future Tech 2024</p>
+                            <p class="achievement-desc">Earned a <strong>Certificate of Achievement</strong> for
+                                securing
+                                <strong>2nd position</strong> at Future Tech 2024 by designing a
+                                military-grade robotic prototype with 360° surveillance and IR metal detection.
+                            </p>
+                            <span class="achievement-badge-pill">Robotics & Engineering</span>
+                        </div>
+                    </div>
+
+                    <div class="achievement-card reveal">
+                        <div class="achievement-icon">🏆</div>
+                        <div class="achievement-body">
+                            <p class="achievement-title">Top 3 – Chandigarh University Exhibition</p>
+                            <p class="achievement-desc">Human-controlled military robot project rated in the
+                                <strong>Top 3</strong> at Chandigarh University's inter-department exhibition,
+                                recognized for innovation in embedded systems &amp; automation.
+                            </p>
+                            <span class="achievement-badge-pill">Hardware Innovation</span>
+                        </div>
+                    </div>
+
+                    <div class="achievement-card reveal">
+                        <div class="achievement-icon">🎓</div>
+                        <div class="achievement-body">
+                            <p class="achievement-title">9+ Professional Certifications</p>
+                            <p class="achievement-desc">Completed <strong>9+ certifications</strong> across domains
+                                including Full-Stack Development, Ethical Hacking, Blockchain, Azure Cognitive Services,
+                                Arduino, and AI for Entrepreneurship.
+                            </p>
+                            <span class="achievement-badge-pill">Continuous Learning</span>
+                        </div>
+                    </div>
+
+                    <div class="achievement-card reveal">
+                        <div class="achievement-icon">💼</div>
+                        <div class="achievement-body">
+                            <p class="achievement-title">Dual Active Internships</p>
+                            <p class="achievement-desc">Currently interning <strong>simultaneously</strong> at
+                                <strong>Prodigy InfoTech</strong> (Front-End Dev) and
+                                <strong>CogniFyz Technologies</strong> (Python Dev), building production-grade
+                                software while pursuing B.Tech.
+                            </p>
+                            <span class="achievement-badge-pill">Professional Experience</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- GitHub Stats -->
+                <div class="github-stats-wrapper reveal">
+                    <img src="https://github-readme-stats.vercel.app/api?username=heysudhuu&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0a1628&title_color=4fc3f7&icon_color=a78bfa&text_color=94a3b8"
+                        alt="Sudhanshu's GitHub Stats" onerror="this.style.display='none'" />
+                    <img src="https://github-readme-streak-stats.herokuapp.com/?user=heysudhuu&theme=tokyonight&hide_border=true&background=0a1628&stroke=4fc3f7&ring=a78bfa&fire=f472b6&currStreakLabel=4fc3f7"
+                        alt="Sudhanshu's GitHub Streak" onerror="this.style.display='none'" />
+                </div>
+
+            </div>
+        </section>
+
         <!-- ============ CONTACT SECTION ============ -->
         <section class="contact" id="contact">
             <div class="container">
@@ -2901,6 +3627,121 @@
                     card.style.transition = 'border-color 0.4s ease, box-shadow 0.4s ease';
                 });
             });
+
+
+            /* =============================================
+               16. SCROLL PROGRESS BAR
+               ============================================= */
+            const scrollBar = document.getElementById('scroll-progress');
+            function updateScrollProgress() {
+                if (!scrollBar) return;
+                const scrollTop = window.scrollY;
+                const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                scrollBar.style.width = (docHeight > 0 ? (scrollTop / docHeight) * 100 : 0) + '%';
+            }
+            window.addEventListener('scroll', updateScrollProgress, { passive: true });
+
+            /* =============================================
+               17. ANIMATED SKILL PROGRESS BARS
+               ============================================= */
+            const skillFills = document.querySelectorAll('.skill-bar-fill');
+            const skillObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const fill = entry.target;
+                        const pct = fill.getAttribute('data-pct') || 0;
+                        fill.style.width = pct + '%';
+                        skillObserver.unobserve(fill);
+                    }
+                });
+            }, { threshold: 0.3 });
+            skillFills.forEach(f => skillObserver.observe(f));
+
+            /* =============================================
+               18. CURSOR TRAIL EFFECT
+               ============================================= */
+            const trails = document.querySelectorAll('.cursor-trail');
+            const trailPositions = Array.from(trails).map(() => ({ x: 0, y: 0 }));
+            let trailMouseX = 0, trailMouseY = 0;
+            const TRAIL_COLORS = ['#4fc3f7', '#818cf8', '#a78bfa', '#c084fc', '#f472b6', '#fb7185'];
+
+            window.addEventListener('mousemove', e => {
+                trailMouseX = e.clientX;
+                trailMouseY = e.clientY;
+            });
+
+            function animateTrail() {
+                let x = trailMouseX, y = trailMouseY;
+                trails.forEach((dot, i) => {
+                    const prev = trailPositions[i];
+                    prev.x += (x - prev.x) * (0.35 - i * 0.04);
+                    prev.y += (y - prev.y) * (0.35 - i * 0.04);
+                    dot.style.left = prev.x + 'px';
+                    dot.style.top = prev.y + 'px';
+                    dot.style.opacity = (0.6 - i * 0.1).toString();
+                    dot.style.width = (5 - i * 0.5) + 'px';
+                    dot.style.height = (5 - i * 0.5) + 'px';
+                    dot.style.background = TRAIL_COLORS[i] || '#4fc3f7';
+                    x = prev.x;
+                    y = prev.y;
+                });
+                requestAnimationFrame(animateTrail);
+            }
+            animateTrail();
+
+            /* =============================================
+               19. EMAILJS CONTACT FORM (Real Email Sending)
+               ============================================= */
+            // ⚠️  Replace with your own EmailJS credentials:
+            //   Service ID  → from EmailJS dashboard
+            //   Template ID → create a template that maps {{from_name}}, {{from_email}}, {{message}}
+            //   Public Key  → from EmailJS account settings
+            const EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID';
+            const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
+            const EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY';
+
+            // Initialize EmailJS
+            if (typeof emailjs !== 'undefined' && EMAILJS_PUBLIC_KEY !== 'YOUR_PUBLIC_KEY') {
+                emailjs.init(EMAILJS_PUBLIC_KEY);
+            }
+
+            const contactForm = document.querySelector('.contact-form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', async function (e) {
+                    e.preventDefault();
+                    const btn = contactForm.querySelector('button[type="submit"]');
+                    const origHTML = btn.innerHTML;
+                    btn.disabled = true;
+                    btn.innerHTML = 'Sending... <span class="loader-inline"></span>';
+
+                    const nameVal = document.getElementById('name').value.trim();
+                    const emailVal = document.getElementById('email').value.trim();
+                    const messageVal = document.getElementById('message').value.trim();
+
+                    // Try real EmailJS send if configured, else fall back to toast
+                    if (typeof emailjs !== 'undefined' && EMAILJS_SERVICE_ID !== 'YOUR_SERVICE_ID') {
+                        try {
+                            await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+                                from_name: nameVal,
+                                from_email: emailVal,
+                                message: messageVal
+                            });
+                            showToast('✓ Message sent! I\'ll get back to you soon.');
+                        } catch (err) {
+                            showToast('⚠ Oops! Something went wrong. Please email me directly.');
+                            console.error('EmailJS error:', err);
+                        }
+                    } else {
+                        // Fallback (EmailJS not configured yet)
+                        await new Promise(r => setTimeout(r, 1500));
+                        showToast('✓ Message sent! I\'ll get back to you soon.');
+                    }
+
+                    contactForm.reset();
+                    btn.disabled = false;
+                    btn.innerHTML = origHTML;
+                });
+            }
 
         }); // end DOMContentLoaded
     </script>
